@@ -24,6 +24,10 @@ AC_CHECK_DECL([PCRE_CONFIG_JIT], [AC_DEFINE([USE_PCRE_JIT], [], [Use PCRE JIT])]
 AC_CHECK_MEMBER([struct dirent.d_type], [AC_DEFINE([HAVE_DIRENT_DTYPE], [], [Have dirent struct member d_type])], [], [[#include <dirent.h>]])
 
 AC_CHECK_FUNCS(vasprintf fgetln getline strndup)
+AC_CHECK_PROG(HAVE_GIT, git, true, false)
+if $HAVE_GIT; then
+    AC_DEFINE([HAVE_GIT], [], [Define when git is installed.])
+fi
 
 AC_CONFIG_FILES([Makefile])
 AC_CONFIG_HEADERS([src/config.h])

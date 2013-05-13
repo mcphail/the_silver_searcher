@@ -434,6 +434,7 @@ void parse_options(int argc, char **argv, char **base_paths[], char **paths[]) {
         free(ignore_file_path);
     }
 
+#ifdef HAVE_GIT
     if (!opts.skip_vcs_ignores) {
         FILE *gitconfig_file = NULL;
         size_t buf_len = 0;
@@ -451,6 +452,7 @@ void parse_options(int argc, char **argv, char **base_paths[], char **paths[]) {
             pclose(gitconfig_file);
         }
     }
+#endif
 
     if (opts.context > 0) {
         opts.before = opts.context;
