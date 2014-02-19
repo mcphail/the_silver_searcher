@@ -164,7 +164,7 @@ void print_file_matches(const char* path, const char* buf, const int buf_len, co
                         fprintf(out_fd, "%s", color_reset);
                     }
                 }
-            } else if (lines_since_last_match <= opts.after) {
+            } else if (lines_since_last_match <= opts.after && i != buf_len) {
                 /* print context after matching line */
                 if (opts.print_heading == 0) {
                     print_path(path, ':');
