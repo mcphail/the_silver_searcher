@@ -6,8 +6,11 @@ ag_LDADD = ${PCRE_LIBS} ${LZMA_LIBS} -lz -lpthread
 
 dist_man_MANS = doc/ag.1
 
-bashcompdir = $(pkgdatadir)/completions
-dist_bashcomp_DATA = ag.bashcomp.sh
+${builddir}/completion/ag: ${srcdir}/completion/ag.bashcomp.sh
+	mkdir -p ${builddir}/completion
+	sed 's/.*have ag.*/# Generated from ag.bashcomp.sh. Please do not edit or add to repository/' ${srcdir}/completion/ag.bashcomp.sh > $@
+bashcompdir = @bashcompdir@
+bashcomp_DATA = @bashcompdata@
 
 # Uncomment this line to output gprof profiling info. This hurts performance.
 #CFLAGS=-pg
@@ -15,4 +18,4 @@ dist_bashcomp_DATA = ag.bashcomp.sh
 test:
 	cram -v tests/*.t
 
-EXTRA_DIST = Makefile.w32 LICENSE NOTICE the_silver_searcher.spec README.md src/win32/config.h
+EXTRA_DIST = Makefile.w32 LICENSE NOTICE the_silver_searcher.spec README.md src/win32/config.h completion/ag.bashcomp.sh
