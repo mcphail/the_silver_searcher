@@ -1,6 +1,6 @@
 AC_INIT(
     [the_silver_searcher],
-    [0.19.2],
+    [0.19.2-mcphail-dead-fork],
     [https://github.com/ggreer/the_silver_searcher/issues],
     [the_silver_searcher],
     [https://github.com/ggreer/the_silver_searcher])
